@@ -48,6 +48,8 @@ const Navbar = () => {
 export default Navbar;
 ```
 
+**Note**: The button above is a basic example to demonstrate MenuIcon usage. You'll need to add an `onClick` handler and state management to implement the actual menu toggle functionality.
+
 ## Verification Steps Completed
 ✅ ESLint check passed - no errors  
 ✅ TypeScript type check passed  
@@ -110,13 +112,13 @@ const Navbar = () => {
 
 ## Security Notes
 
-A high-severity vulnerability was detected in Next.js (v16.1.2). This is unrelated to the MenuIcon fix but can be addressed with:
+A high-severity vulnerability exists in Next.js v16.1.2 (present before this PR). This is **unrelated to the MenuIcon fix** but should be addressed separately:
 
 ```bash
 npm audit fix --force
 ```
 
-This will update Next.js to v16.1.6 which includes security patches.
+This will update Next.js to v16.1.6 which includes security patches. Note that this update is outside the scope of fixing the MenuIcon import error.
 
 ## Common Import Patterns for MUI Icons
 
