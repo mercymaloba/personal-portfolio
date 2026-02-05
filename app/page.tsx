@@ -1,3 +1,8 @@
+import Navbar from "@/components/navbar";
+import Stack from '@mui/material/Stack';
+
 export default function Home() {
-  return <p>My portfolio</p>;
+  return <Stack>
+   <Navbar />
+  </Stack>;
 }
