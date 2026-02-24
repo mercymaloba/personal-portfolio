@@ -4,6 +4,8 @@ import Stack from '@mui/material/Stack';
 import {About} from "@/feature/about";
 import {Skills} from "@/feature/skills";
 import Projects from "@/feature/projects";
+import ContactDetails from "@/feature/contact";
+import Footer from "@/feature/Footer";
 
 export default function Page() {
   return <Stack>
@@ -12,5 +14,7 @@ export default function Page() {
       <About/>
       <Skills/>
       <Projects />
-  </Stack>;
+      <ContactDetails />
+      <Footer />
+  </Stack>
 }
