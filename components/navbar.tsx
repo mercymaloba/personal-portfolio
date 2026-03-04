@@ -1,55 +1,65 @@
-'use client'
+"use client";
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import { useState } from "react";
 
-
-
-
-const pages = ['About', 'Skills', 'Projects', 'Contact'];
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  return <AppBar position="static">
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
-        <Typography
+  const navItems = [
+    {
+      id: "about",
+      label: "About",
+    },
+    { id: "skills", label: "Skills" },
+    {
+      id: "projects",
+      label: "Projects",
+    },
+    {
+      id: "contact",
+      label: "Contact",
+    },
+  ];
+
+  return (
+    <AppBar position="fixed">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              color: "inherit",
+              textDecoration: "none",
             }}
-        >
-          Mercy Maloba
-        </Typography>
+          >
+            Mercy Maloba
+          </Typography>
 
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page) => (
-              <Button
-                  key={page}
-                  onClick={() => {}}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            {navItems.map((item) => (
+              <Button key={item.id} onClick={() => {}} sx={{ color: "white" }}>
+                {item.label}
               </Button>
-          ))}
-        </Box>
-      </Toolbar>
-    </Container>
-  </AppBar>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 };
 
 export default Navbar;
-
