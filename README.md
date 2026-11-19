@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mercy Maloba — Portfolio
 
-## Getting Started
+A minimal portfolio built with Next.js App Router, TypeScript, and Material UI. Existing feature sections live in `feature/`; navigation and the server-rendered MUI theme live in `components/`.
 
-First, run the development server:
+## Run locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+```sh
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. For production, run `pnpm build` and `pnpm start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content and styling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `feature/home.tsx`: introduction
+- `data/portfolio.ts`: typed project, credential, skill, and CV content
+- `feature/projects.tsx`: sample project cards with individual detail pages
+- `app/projects/[slug]/page.tsx`: shared project detail template
+- `feature/qualifications.tsx`: education, certifications, training, and achievements
+- `public/documents/Mercy_Maloba_CV.pdf`: downloadable original CV
+- `feature/about.tsx` and `feature/skills.tsx`: background and expertise
+- `feature/contact.tsx`: contact details and email draft form
+- `app/globals.css`: responsive layouts, typography, and reduced-motion support
+- `components/theme-provider.tsx`: MUI theme and Emotion server style registry
+- `app/layout.tsx`: page metadata
 
-## Learn More
+The contact form validates required fields and opens a prefilled message in the visitor’s email app. It does not send email through a backend. Confirm the email address before publishing. Skills and credentials were transcribed from the supplied CV; the three projects are explicitly labeled sample concepts.
 
-To learn more about Next.js, take a look at the following resources:
+## Checks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpm exec tsc --noEmit
+pnpm build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Docker
 
-## Deploy on Vercel
+Run `docker compose up --build`, then visit http://localhost:3000.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Updating portfolio content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edit `data/portfolio.ts` to add or replace projects, credentials, and skill groups. Each project needs a unique URL-safe `slug`; its detail page is generated automatically. Set optional `liveUrl` and `repositoryUrl` fields to absolute HTTPS URLs to display external links on cards and detail pages. Sample project pages are briefs, not functional product demos.
+
+Credentials are grouped by `category` (Education, Certification, Training, Achievement). Add an optional `verificationUrl` to show a certificate link. Use unique credential IDs. The site does not claim independent verification of CV entries.
+
+Replace `public/documents/Mercy_Maloba_CV.pdf` to update the downloadable CV, or change the shared `cv` configuration to point to another file. Both download links use this configuration. Files in `public/` are publicly accessible when deployed.

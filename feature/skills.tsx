@@ -1,32 +1,24 @@
-import {Chip, Stack} from "@mui/material"
-import Typography from "@mui/material/Typography";
+import { skillAreas } from "@/data/portfolio";
 
-export const Skills = () => {
-    return (
-        <Stack>
-            <Typography variant="h1">Skills & Expertise</Typography>
-            <Typography>A comprehensive skill set spanning the full software development lifecycle</Typography>
-
-            <Stack sx={{backgroundColor: 'grey.300', padding: 2, borderRadius: 1}}>
-                <Typography variant="h4">Frontend development</Typography>
-                <Typography variant="body1">
-                    Creating beautiful responsive user interfaces </Typography>
-                <Stack direction="row">
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                </Stack>
-            </Stack>
-            <Stack>
-                <Typography variant="h4">Currently focusing on</Typography>
-                <Stack direction="row">
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                    <Chip variant="outlined" label="react"/>
-                </Stack>
-            </Stack>
-        </Stack>
-    )
+export function Skills() {
+  return (
+    <section id="skills" className="shell section">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">How I can help</p>
+          <h2>The craft behind the work.</h2>
+        </div>
+        <p>Across the stack, with the bigger picture in mind.</p>
+      </div>
+      <div className="expertise-list">
+        {skillAreas.map((area) => (
+          <article key={area.title} className="expertise-row">
+            <h3>{area.title}</h3>
+            <p>{area.description}</p>
+            <p className="tools">{area.tools}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }

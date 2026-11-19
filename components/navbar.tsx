@@ -1,83 +1,61 @@
 "use client";
 
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Button, IconButton, Collapse } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
-const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  const navItems = [
-    {
-      id: "about",
-      label: "About",
-    },
-    { id: "skills", label: "Skills" },
-    {
-      id: "projects",
-      label: "Projects",
-    },
-    {
-      id: "contact",
-      label: "Contact",
-    },
-  ];
-
+const links = [
+  { id: "projects", label: "Work" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Expertise" },
+  { id: "qualifications", label: "Credentials" },
+];
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
-    <AppBar position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Mercy Maloba
-          </Typography>
-
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {navItems.map((item) => (
-              <Button key={item.id} onClick={() => {}} sx={{ color: "white" }}>
-                {item.label}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <header className="site-header">
+      <div className="shell nav-bar">
+        <a className="wordmark" href="#home">
+          Mercy Maloba<span>.</span>
+        </a>
+        <nav aria-label="Main navigation" className="desktop-nav">
+          {links.map((link) => (
+            <a key={link.id} href={`#${link.id}`}>
+              {link.label}
+            </a>
+          ))}
+          <Button variant="contained" href="#contact">
+            Get in touch
+          </Button>
+        </nav>
+        <IconButton
+          className="menu-toggle"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <CloseIcon /> : <MenuIcon />}
+        </IconButton>
+      </div>
+      <Collapse in={open}>
+        <nav
+          id="mobile-navigation"
+          className="mobile-nav shell"
+          aria-label="Mobile navigation"
+        >
+          {[...links, { id: "contact", label: "Get in touch" }].map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </Collapse>
+    </header>
   );
-};
-
-export default Navbar;
+}

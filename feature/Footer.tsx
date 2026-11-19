@@ -1,11 +1,13 @@
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-
-const Footer = ()=>{
-    return(
-        <Stack>
-            <Typography>2026 Malobs</Typography>
-        </Stack>
-    )
+export default function Footer() {
+  return (
+    <footer className="shell footer">
+      <a className="wordmark" href="#home">
+        Mercy Maloba<span>.</span>
+      </a>
+      <p>© {new Date().getFullYear()} Mercy Maloba</p>
+      <a className="text-link" href="#home">
+        Back to top
+      </a>
+    </footer>
+  );
 }
-export default Footer;

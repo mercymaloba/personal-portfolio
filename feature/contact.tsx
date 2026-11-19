@@ -1,76 +1,83 @@
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import {TextField} from "@mui/material";
-import Button from "@mui/material/Button";
-import EmailIcon from '@mui/icons-material/Email';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+"use client";
 
-const ContactDetails = () => {
-    return (
-        <Stack spacing={2}>
-            <Typography variant="h1" color="textSecondary">
-                Let us work together
+import { useState, type FormEvent } from "react";
+import { Alert, Button, TextField } from "@mui/material";
 
-            </Typography>
-            <Typography>Have a project in mind or want to discuss opportunities? I would love to hear from
-                you.</Typography>
-
-            <Stack direction="row">
-                <Stack sx={{backgroundColor: 'grey.300', padding: 2, borderRadius: 1}}>
-                    <Typography>Send me a message</Typography>
-                    <Stack direction="row">
-                        <Typography>Name</Typography>
-                        <TextField/>
-                        <Typography>Email</Typography>
-                        <TextField/>
-
-
-                    </Stack>
-                    <Typography>Subject</Typography>
-                    <TextField/>
-                    <Typography>Message</Typography>
-                    <TextField multiline/>
-                </Stack>
-                <Button variant="contained" color="primary">Send message</Button>
-
-                <Stack>
-                    <Typography variant="h4">Get in touch</Typography>
-                    <Typography variant="h4">Im always open to discussing new opportunities, interesting projects, or
-                        just having a chat about technology and software development.</Typography>
-                    <Stack direction="row">
-                        <EmailIcon/>
-                        <Stack direction='column'>
-                            <Typography variant="h6">Email</Typography>
-                            <Typography>mmaloba@gmail.com</Typography>
-                        </Stack>
-                        <EmailIcon/>
-                        <Stack direction='column'>
-                            <Typography variant="h6">Phone</Typography>
-                            <Typography>0740400160</Typography>
-                        </Stack>
-                        <EmailIcon/>
-                        <Stack direction='column'>
-                            <Typography variant="h6">Location</Typography>
-                            <Typography>Nairobi</Typography>
-                        </Stack>
-                  </Stack>
-                    <Typography>Follow me</Typography>
-                    <Stack direction="row">
-                        <LinkedInIcon/>
-                        <LinkedInIcon/>
-                        <LinkedInIcon/>
-                    </Stack>
-                    <Stack sx={{ backgroundColor: 'grey.300', padding: 2, borderRadius: 1 }}>
-                        <Typography variant="h4">Currently Available
-                        </Typography>
-                        <Typography variant="body1">Open to full-time opportunities, consulting projects, and interesting collaborations.
-
-                        </Typography>
-
-                    </Stack>
-                </Stack>
-            </Stack>
-        </Stack>
-    )
+export default function ContactDetails() {
+  const [ready, setReady] = useState(false);
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = String(data.get("subject") || "Portfolio enquiry");
+    const body = `Hi Mercy,\n\n${data.get("message")}\n\n${data.get("name")}\n${data.get("email")}`;
+    window.location.href = `mailto:mmaloba@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setReady(true);
+  }
+  return (
+    <section id="contact" className="contact-section">
+      <div className="shell section contact-grid">
+        <div>
+          <p className="eyebrow">Let’s talk</p>
+          <h2>
+            Have something
+            <br />
+            <em>in mind?</em>
+          </h2>
+          <p className="contact-intro">
+            A new project, a role, or a technical challenge. I’d love to hear
+            what you’re thinking.
+          </p>
+          <a className="email-link" href="mailto:mmaloba@gmail.com">
+            mmaloba@gmail.com
+          </a>
+          <p className="contact-location">Based in Nairobi, Kenya</p>
+        </div>
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-row">
+            <TextField
+              label="Your name"
+              name="name"
+              autoComplete="name"
+              required
+              inputProps={{ maxLength: 100 }}
+            />
+            <TextField
+              label="Email address"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+            />
+          </div>
+          <TextField
+            label="What’s it about?"
+            name="subject"
+            required
+            inputProps={{ maxLength: 160 }}
+          />
+          <TextField
+            label="Tell me a little about it"
+            name="message"
+            multiline
+            minRows={4}
+            required
+            inputProps={{ maxLength: 4000 }}
+          />
+          <div className="form-bottom">
+            <Button variant="contained" type="submit">
+              Start a conversation
+            </Button>
+            <span>Opens your email app</span>
+          </div>
+          {ready && (
+            <Alert severity="info">
+              Your email draft is ready in your email app. Send it there to get
+              in touch. You can also email me directly using the address
+              alongside this form.
+            </Alert>
+          )}
+        </form>
+      </div>
+    </section>
+  );
 }
-export default ContactDetails;
