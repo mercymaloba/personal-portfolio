@@ -18,14 +18,9 @@ export default function ContactDetails() {
       <div className="shell section contact-grid">
         <div>
           <p className="eyebrow">Let’s talk</p>
-          <h2>
-            Have something
-            <br />
-            <em>in mind?</em>
-          </h2>
+          <h2>Say hello.</h2>
           <p className="contact-intro">
-            A new project, a role, or a technical challenge. I’d love to hear
-            what you’re thinking.
+            Have a project or role in mind? Drop me a note.
           </p>
           <a className="email-link" href="mailto:mmaloba@gmail.com">
             mmaloba@gmail.com

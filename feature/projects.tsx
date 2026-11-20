@@ -7,13 +7,10 @@ export default function Projects() {
     <section id="projects" className="shell section">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Selected work</p>
-          <h2>From an idea to something useful.</h2>
+          <p className="eyebrow">Projects</p>
+          <h2>A few things to explore.</h2>
         </div>
-        <p>
-          Sample project concepts to explore. These will be replaced with
-          completed work.
-        </p>
+        <p>Sample concepts for now. Real projects coming here soon.</p>
       </div>
       <div className="project-grid">
         {projects.map((project) => (

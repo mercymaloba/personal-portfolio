@@ -4,32 +4,28 @@ import { cv } from "@/data/portfolio";
 
 export function Home() {
   return (
-    <section id="home" className="shell hero">
-      <div className="hero-copy">
-        <p className="eyebrow">Software engineer · Nairobi, Kenya</p>
+    <section id="home" className="shell intro">
+      <div className="intro-copy">
+        <p className="eyebrow">Software engineer · Nairobi</p>
         <h1>
-          Thoughtful software.
-          <br />
-          Built for the <em>real world.</em>
+          Hi, I’m Mercy<span className="intro-period">.</span>
         </h1>
-        <p className="hero-description">
-          I’m Mercy, a software engineer who brings clarity to complex problems.
-          I build digital banking, payment, and enterprise web applications with
-          Javascript and TypeScript.
+        <p className="intro-description">
+          I build web applications for banking, payments, and everyday work.
         </p>
-        <div className="hero-actions">
-          <Button variant="contained" href="#contact">
-            Let’s work together
+        <div className="intro-actions">
+          <Button variant="contained" href="#projects">
+            Take a look around
           </Button>
-          <a className="text-link" href="#projects">
-            Explore my work
-          </a>
           <a className="text-link" href={cv.url} download={cv.filename}>
             Download CV (PDF)
           </a>
         </div>
+        <p className="intro-note">
+          Usually writing TypeScript. Sometimes playing table tennis.
+        </p>
       </div>
-      <aside className="hero-aside">
+      <aside className="intro-photo">
         <Image
           className="profile-portrait"
           src="/images/mercy-maloba.jpg"
@@ -37,9 +33,10 @@ export function Home() {
           width={110}
           height={110}
           sizes="(max-width: 650px) 80px, 110px"
+          priority
         />
         <p className="eyebrow">A little about me</p>
-        <p>
+        <p className="intro-photo-heading">
           Engineer by craft.
           <br />
           Problem solver at heart.
@@ -49,10 +46,6 @@ export function Home() {
           we’re building and the people using it.
         </div>
       </aside>
-      <div className="hero-footnote">
-        <span>Full-stack development & engineering leadership</span>
-        <a href="#skills">React · TypeScript · Node.js · AWS</a>
-      </div>
     </section>
   );
 }

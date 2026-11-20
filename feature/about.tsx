@@ -3,36 +3,25 @@ export function About() {
     <section id="about" className="about-section">
       <div className="shell section about-grid">
         <div>
-          <p className="eyebrow">Behind the work</p>
+          <p className="eyebrow">A little about me</p>
           <h2>
-            Good software starts
-            <br />
-            with understanding.
+            Code, people,
+            <br />a bit of ping-pong.
           </h2>
         </div>
         <div className="about-copy">
           <p className="lead">
-            I’m Mercy Maloba, a software engineer based in Nairobi with a focus
-            on digital banking, payment platforms, and enterprise web
-            applications.
+            At Diamond Trust Bank, I work on the applications behind consent,
+            lending, and payments.
           </p>
           <p>
-            At Diamond Trust Bank, I develop applications that support consent
-            management, lending, and payment workflows. My earlier experience
-            spans network security at the ICT Authority and intellectual
-            property research.
+            Before that: network security and intellectual property research.
+            Outside work: mentoring graduates through Daring Distant Dreams, and
+            a soft spot for table tennis.
           </p>
-          <p>
-            I work with React, Next.js, TypeScript, Node.js, and Python,
-            alongside API integration, testing, and containerized delivery.
-            Beyond the code, I mentor young graduates through Daring Distant
-            Dreams.
-          </p>
-          <div className="values">
-            <span>Clarity over complexity</span>
-            <span>Care for the details</span>
-            <span>Build together</span>
-          </div>
+          <a className="text-link" href="#qualifications">
+            More on my background
+          </a>
         </div>
       </div>
     </section>

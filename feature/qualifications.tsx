@@ -12,16 +12,20 @@ export function Qualifications() {
     <section id="qualifications" className="shell section">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Learning & recognition</p>
-          <h2>The foundation behind the work.</h2>
+          <p className="eyebrow">Background</p>
+          <h2>The longer version.</h2>
         </div>
-        <p>
-          Education, professional development, and impact throughout my career.
-        </p>
+        <p>Open a section for the details.</p>
       </div>
       {groups.map(({ category, title }) => (
-        <section className="credential-group" key={category} aria-label={title}>
-          <h3 className="credential-group-title">{title}</h3>
+        <details className="credential-group" key={category}>
+          <summary className="credential-group-title">
+            <span>{title}</span>
+            <span className="credential-count">
+              {credentials.filter((item) => item.category === category).length}{" "}
+              entries
+            </span>
+          </summary>
           <div className="credentials-grid">
             {credentials
               .filter((item) => item.category === category)
@@ -46,15 +50,12 @@ export function Qualifications() {
                 </article>
               ))}
           </div>
-        </section>
+        </details>
       ))}
       <div className="cv-banner">
         <div>
-          <h3>My experience, in one place.</h3>
-          <p>
-            Download my CV for professional experience, qualifications, and
-            technical skills.
-          </p>
+          <h3>Prefer a PDF?</h3>
+          <p>It’s all in my CV.</p>
         </div>
         <a className="download-link" href={cv.url} download={cv.filename}>
           Download CV (PDF)
